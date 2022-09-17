@@ -1,0 +1,40 @@
+#include<iostream> 
+#include<vector>
+
+using namespace std; 
+ 
+  
+vector <int> generateprime(int n)
+{
+vector <int> primes;
+vector<bool> isprime(n+1,true);
+
+isprime[0]=isprime[1]=false;
+
+  for(int p=2;p<n;p++)
+  {
+   if(isprime[p])
+   {
+    primes.emplace_back(p);
+
+    for(int j=p;j<=n;j+=p)
+     {
+       isprime[j]=false;
+     }
+
+   }
+
+}
+return primes;
+}
+
+ int main() 
+ { 
+     int i,n; 
+     cout<<"Enter the number"<<endl; 
+     scanf("%d",&n); 
+    vector <int> v = generateprime(n);
+     for(int i=0;i<v.size();i++)
+     cout<<v[i]<<"\n";
+     return 0; 
+ }
